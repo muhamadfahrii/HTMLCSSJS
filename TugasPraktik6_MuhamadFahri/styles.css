@@ -128,7 +128,7 @@ footer p {
   font-style: italic;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 641px) {
   .nav__links {
     display: flex;
   }
