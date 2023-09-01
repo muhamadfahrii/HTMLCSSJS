@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Object Model</title>
+    <style>
+      * {
+        margin: 2px;
+        padding: 2px;
+        font-family: Poppins;
+      }
+      button {
+        width: 80px;
+        margin: 0 -1px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BIODATA MAHASISWA</h1>
+    <table>
+      <tr>
+        <td>NIM</td>
+        <td>:</td>
+        <td>
+          <input
+            type="number"
+            id="nim"
+            placeholder="Masukkan Nomor Induk Mahasiswa Anda"
+            autocomplete="off"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td>
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan Nama Anda"
+            autocomplete="off"
+            required
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button type="button" onclick="submit()">Submit</button>
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      function submit() {
+        let nim = document.getElementById("nim").value;
+        let nama = document.getElementById("nama").value;
+
+        let output = "Nim: " + nim + "\nNama: " + nama;
+        alert(output);
+      }
+    </script>
+  </body>
+</html>
