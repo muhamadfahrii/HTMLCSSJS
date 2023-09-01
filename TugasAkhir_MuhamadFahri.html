@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pasien Rumah Sakit</title>
+    <!--Link to Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: aqua">
+    <div class="container">
+      <h1 class="mt-5 mb-5"><u>Data Pasien RS Gamelab Indonesia</u></h1>
+      <div class="mb-5">
+        <div class="flex">
+          <form id="tambahPasienForm">
+            <div class="form-group col-md-3">
+              <label for="nomorRekam">ID Pasien:</label>
+              <input
+                type="number"
+                id="nomorRekam"
+                class="form-control"
+                placeholder="Masukkan ID Pasien Anda"
+                name="nomorRekam"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="namaPasien">Nama Pasien:</label>
+              <input
+                type="text"
+                id="namaPasien"
+                class="form-control"
+                placeholder="Masukkan Nama Anda"
+                name="namaPasien"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="alamat">Alamat:</label>
+              <input
+                type="text"
+                id="alamat"
+                class="form-control"
+                placeholder="Masukkan Alamat Lengkap Anda"
+                name="alamat"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="penyakit">Penyakit:</label>
+              <input
+                type="text"
+                id="penyakit"
+                class="form-control"
+                placeholder="Masukkan Penyakit Anda"
+                name="penyakit"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="nomorRuang">Nomor Ruang:</label>
+              <input
+                type="number"
+                id="nomorRuang"
+                class="form-control"
+                placeholder="Masukkan Nomor Ruangan Anda"
+                name="nomorRuang"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="bpjs">BPJS:</label>
+              <select id="bpjs" class="form-control" name="bpjs">
+                <option value="tidak menggunakan">Tidak menggunakan</option>
+                <option value="Kelas 1">Kelas 1</option>
+                <option value="Kelas 2">Kelas 2</option>
+                <option value="Kelas 3">Kelas 3</option></select
+              ><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="tanggalMasuk">Tanggal Masuk:</label>
+              <input
+                type="date"
+                id="tanggalMasuk"
+                class="form-control"
+                placeholder="Masukkan Tanggal Masuk Anda"
+                name="tanggalMasuk"
+                required
+              /><br />
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="tanggalKeluar">Tanggal Keluar:</label>
+              <input
+                type="date"
+                id="tanggalKeluar"
+                class="form-control"
+                placeholder="Masukkan Tanggal Keluar Anda"
+                name="tanggalKeluar"
+              /><br />
+            </div>
+            <div class="col-lg-12">
+              <button class="btn btn-success" type="submit">
+                Tambah Pasien
+              </button>
+            </div>
+          </form>
+
+          <h2 class="mt-5 mb-5"><u>Daftar Pasien</u></h2>
+          <div class="row mt-5">
+            <div class="col-12">
+              <table class="table table-bordered" id="crudTable">
+                <thead>
+                  <tr>
+                    <th style="background-color: yellow">Nomor Rekam</th>
+                    <th style="background-color: yellow">Nama Pasien</th>
+                    <th style="background-color: yellow">Alamat</th>
+                    <th style="background-color: yellow">Penyakit</th>
+                    <th style="background-color: yellow">Nomor Ruang</th>
+                    <th style="background-color: yellow">BPJS</th>
+                    <th style="background-color: yellow">Tanggal Masuk</th>
+                    <th style="background-color: yellow">Tanggal Keluar</th>
+                    <th style="background-color: yellow">Aksi</th>
+                  </tr>
+                </thead>
+                <!-- Data pasien akan ditampilkan di sini -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Implementasi JavaScript untuk menambah dan menampilkan data pasien
+      const form = document.getElementById("tambahPasienForm");
+      const table = document.querySelector("table");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Ambil nilai dari input form
+        const nomorRekam = document.getElementById("nomorRekam").value;
+        const namaPasien = document.getElementById("namaPasien").value;
+        const alamat = document.getElementById("alamat").value;
+        const penyakit = document.getElementById("penyakit").value;
+        const nomorRuang = document.getElementById("nomorRuang").value;
+        const bpjs = document.getElementById("bpjs").value;
+        const tanggalMasuk = document.getElementById("tanggalMasuk").value;
+        const tanggalKeluar = document.getElementById("tanggalKeluar").value;
+
+        // Buat baris baru untuk tabel
+        const newRow = table.insertRow(table.rows.length);
+
+        // Tambahkan sel-sel untuk setiap kolom
+        const cells = [
+          newRow.insertCell(0),
+          newRow.insertCell(1),
+          newRow.insertCell(2),
+          newRow.insertCell(3),
+          newRow.insertCell(4),
+          newRow.insertCell(5),
+          newRow.insertCell(6),
+          newRow.insertCell(7),
+          newRow.insertCell(8),
+        ];
+
+        // Isi nilai pada setiap sel
+        cells[0].innerText = nomorRekam;
+        cells[1].innerText = namaPasien;
+        cells[2].innerText = alamat;
+        cells[3].innerText = penyakit;
+        cells[4].innerText = nomorRuang;
+        cells[5].innerText = bpjs;
+        cells[6].innerText = tanggalMasuk;
+        cells[7].innerText = tanggalKeluar;
+        cells[8].innerHTML =
+          '<button class="btn btn-danger" onclick="hapusPasien(this)">Hapus</button>';
+
+        // Reset nilai input form
+        form.reset();
+      });
+
+      // Fungsi untuk menghapus baris pasien
+      function hapusPasien(button) {
+        const row = button.parentNode.parentNode;
+        table.deleteRow(row.rowIndex);
+      }
+    </script>
+  </body>
+</html>
